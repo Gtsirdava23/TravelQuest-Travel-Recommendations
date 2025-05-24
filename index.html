@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelQuest | Personalized Travel Recommendations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-theme">
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="#" class="brand-logo" data-section="home"><i class="fas fa-plane-departure"></i> TravelQuest</a>
+            <ul class="nav-links">
+                <li><a href="#" data-section="home">Home</a></li>
+                <li><a href="#" data-section="quiz">Take the Quiz</a></li>
+                <li><a href="#" data-section="about">About Us</a></li>
+                <li><button id="themeToggle" class="theme-toggle"><i class="fas fa-moon"></i></button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <section id="home" class="page-section active">
+            <div class="hero-section">
+                <div class="hero-text">
+                    <h1>Find Your Perfect Trip!</h1>
+                    <p>TravelQuest helps you discover the best destinations for your next adventure, tailored to your unique preferences.</p>
+                    <button class="btn-primary" data-section="quiz"><i class="fas fa-paper-plane"></i> Start the Quiz</button>
+                </div>
+            </div>
+
+            <div class="gallery-section">
+                <h2><i class="fas fa-images"></i> Our Favorite Destinations</h2>
+                <p>Get inspired by beautiful places we can recommend.</p>
+                <div class="recommendations-grid gallery-grid">
+                    </div>
+            </div>
+        </section>
+
+        <section id="quiz" class="page-section hidden">
+            <header class="section-header">
+                <h2><i class="fas fa-question-circle"></i> Take Our Quiz</h2>
+                <p>Answer a few simple questions so we can find the best destination for you.</p>
+            </header>
+
+            <form id="quizForm">
+                <div class="quiz-container">
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progressBar"></div>
+                        <span class="progress-text" id="progressText">Step 1 of 5</span>
+                    </div>
+
+                    <div class="quiz-step active" data-step="1">
+                        <h2><i class="fas fa-brush"></i> Choose your preferred travel style (multiple selection):</h2>
+                        <div class="options-container">
+                            <label class="option-card">
+                                <input type="checkbox" name="style" value="relax">
+                                <div class="option-content">
+                                    <span><i class="fas fa-couch"></i></span>
+                                    <h3>Relaxation</h3>
+                                    <p>Peaceful rest, spa, beach, no rush.</p>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="checkbox" name="style" value="adventure">
+                                <div class="option-content">
+                                    <span><i class="fas fa-mountain"></i></span>
+                                    <h3>Adventure</h3>
+                                    <p>Active tourism, extreme sports, exploration.</p>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="checkbox" name="style" value="culture">
+                                <div class="option-content">
+                                    <span><i class="fas fa-university"></i></span>
+                                    <h3>Culture</h3>
+                                    <p>Museums, galleries, historical landmarks, architecture.</p>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="checkbox" name="style" value="food">
+                                <div class="option-content">
+                                    <span><i class="fas fa-utensils"></i></span>
+                                    <h3>Gastronomy</h3>
+                                    <p>Culinary tours, local cuisine, tastings.</p>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="checkbox" name="style" value="nature">
+                                <div class="option-content">
+                                    <span><i class="fas fa-tree"></i></span>
+                                    <h3>Nature</h3>
+                                    <p>Nature reserves, forests, mountains, parks, wildlife.</p>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="checkbox" name="style" value="city_break">
+                                <div class="option-content">
+                                    <span><i class="fas fa-building"></i></span>
+                                    <h3>City Break</h3>
+                                    <p>Vibrant cities, shopping, nightlife, urban atmosphere.</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="step-actions">
+                            <button type="button" class="btn-next">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="quiz-step" data-step="2">
+                        <h2><i class="fas fa-wallet"></i> What is your approximate budget?</h2>
+                        <div class="options-container">
+                            <label class="option-card">
+                                <input type="radio" name="budget" value="low" required>
+                                <div class="option-content">
+                                    <span><i class="fas fa-dollar-sign"></i></span>
+                                    <h3>Budget</h3>
+                                    <p>Affordable options, saving on everything.</p>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="budget" value="medium">
+                                <div class="option-content">
+                                    <span><i class="fas fa-dollar-sign"></i><i class="fas fa-dollar-sign"></i></span>
+                                    <h3>Mid-range</h3>
+                                    <p>Comfortable vacation without excesses.</p>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="budget" value="high">
+                                <div class="option-content">
+                                    <span><i class="fas fa-dollar-sign"></i><i class="fas fa-dollar-sign"></i><i class="fas fa-dollar-sign"></i></span>
+                                    <h3>Premium</h3>
+                                    <p>"All inclusive" vacation, luxury and comfort.</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="step-actions">
+                            <button type="button" class="btn-prev"><i class="fas fa-arrow-left"></i> Back</button>
+                            <button type="button" class="btn-next">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="quiz-step" data-step="3">
+                        <h2><i class="fas fa-cloud-sun"></i> What season are you planning to travel?</h2>
+                        <div class="options-container">
+                            <label class="option-card">
+                                <input type="radio" name="season" value="spring" required>
+                                <div class="option-content">
+                                    <span><i class="fas fa-leaf"></i></span>
+                                    <h3>Spring</h3>
+                                    <p>Nature blooming, mild weather.</p>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="season" value="summer">
+                                <div class="option-content">
+                                    <span><i class="fas fa-sun"></i></span>
+                                    <h3>Summer</h3>
+                                    <p>Warm sea, active recreation.</p>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="season" value="autumn">
+                                <div class="option-content">
+                                    <span><i class="fas fa-wind"></i></span>
+                                    <h3>Autumn</h3>
+                                    <p>Colorful landscapes, cultural events.</p>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="season" value="winter">
+                                <div class="option-content">
+                                    <span><i class="fas fa-snowflake"></i></span>
+                                    <h3>Winter</h3>
+                                    <p>Ski resorts, festive atmosphere.</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="step-actions">
+                            <button type="button" class="btn-prev"><i class="fas fa-arrow-left"></i> Back</button>
+                            <button type="button" class="btn-next">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="quiz-step" data-step="4">
+                        <h2><i class="fas fa-clock"></i> What is the approximate duration of your trip?</h2>
+                        <div class="options-container">
+                            <label class="option-card">
+                                <input type="radio" name="duration" value="short" required>
+                                <div class="option-content">
+                                    <span><i class="fas fa-hourglass-start"></i></span>
+                                    <h3>Short</h3>
+                                    <p>2-3 days (weekend).</p>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="duration" value="medium">
+                                <div class="option-content">
+                                    <span><i class="fas fa-hourglass-half"></i></span>
+                                    <h3>Medium</h3>
+                                    <p>4-7 days (a week).</p>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="duration" value="long">
+                                <div class="option-content">
+                                    <span><i class="fas fa-hourglass-end"></i></span>
+                                    <h3>Long</h3>
+                                    <p>More than a week.</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="step-actions">
+                            <button type="button" class="btn-prev"><i class="fas fa-arrow-left"></i> Back</button>
+                            <button type="button" class="btn-next">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="quiz-step" data-step="5">
+                        <h2><i class="fas fa-heart"></i> Special preferences (multiple selection):</h2>
+                        <div class="options-container">
+                            <label class="option-card">
+                                <input type="checkbox" name="special" value="family">
+                                <div class="option-content">
+                                    <span><i class="fas fa-family"></i></span>
+                                    <h3>Family</h3>
+                                    <p>Suitable for children, kids' entertainment.</p>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="checkbox" name="special" value="solo">
+                                <div class="option-content">
+                                    <span><i class="fas fa-person"></i></span>
+                                    <h3>Solo Travel</h3>
+                                    <p>For lone travelers.</p>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="checkbox" name="special" value="romantic">
+                                <div class="option-content">
+                                    <span><i class="fas fa-heart"></i></span>
+                                    <h3>Romantic</h3>
+                                    <p>For couples, honeymoon.</p>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="checkbox" name="special" value="pets">
+                                <div class="option-content">
+                                    <span><i class="fas fa-dog"></i></span>
+                                    <h3>With Pets</h3>
+                                    <p>Pet-friendly accommodation allowed.</p>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="checkbox" name="special" value="disabled_friendly">
+                                <div class="option-content">
+                                    <span><i class="fas fa-wheelchair"></i></span>
+                                    <h3>Accessibility</h3>
+                                    <p>Facilities for people with disabilities.</p>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="checkbox" name="special" value="eco_tourism">
+                                <div class="option-content">
+                                    <span><i class="fas fa-leaf"></i></span>
+                                    <h3>Eco-tourism</h3>
+                                    <p>Environmentally friendly vacation.</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="step-actions">
+                            <button type="button" class="btn-prev"><i class="fas fa-arrow-left"></i> Back</button>
+                            <button type="submit" class="btn-submit">Get Recommendation <i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <div id="resultContainer" class="result-container hidden">
+            </div>
+
+        <div id="feedbackFormContainer" class="feedback-container hidden">
+            <h2><i class="fas fa-comment-dots"></i> Your Feedback Matters!</h2>
+            <p>Help us improve our recommendations.</p>
+            <form id="feedbackForm" class="styled-form">
+                <div class="form-group">
+                    <label for="rating">Rate the recommendation:</label>
+                    <div class="rating-stars">
+                        <i class="far fa-star" data-value="1"></i>
+                        <i class="far fa-star" data-value="2"></i>
+                        <i class="far fa-star" data-value="3"></i>
+                        <i class="far fa-star" data-value="4"></i>
+                        <i class="far fa-star" data-value="5"></i>
+                    </div>
+                    <input type="hidden" id="rating" name="rating" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="comments">Your comments (optional):</label>
+                    <textarea id="comments" name="comments" rows="4" placeholder="Write your feedback here..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Submit Feedback</button>
+                    <button type="button" class="btn-secondary" id="cancelFeedback"><i class="fas fa-times"></i> Later</button>
+                </div>
+            </form>
+            <button type="button" class="btn-primary" id="restartQuizFromFeedback"><i class="fas fa-redo"></i> Try Again</button>
+        </div>
+
+        <section id="about" class="page-section hidden">
+            <header class="section-header">
+                <h2><i class="fas fa-info-circle"></i> About TravelQuest</h2>
+                <p>Our mission is to make your travel planning easy and inspiring.</p>
+            </header>
+            <div class="about-content">
+                <p>TravelQuest is an innovative web application designed to help you find the perfect vacation spot. Through our interactive quiz, we analyze your preferences regarding travel style, budget, season and special wishes to provide you with personalized recommendations that truly meet your needs.</p>
+                <p>We believe that every trip should be unique and memorable. Our database is constantly updated, offering you the most relevant and interesting destinations from around the world. We strive to inspire you for new discoveries and help create unforgettable memories.</p>
+                <p>Join the TravelQuest community and start planning your dream today!</p>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <i class="fas fa-globe-americas"></i>
+                        <h3>Wide Selection</h3>
+                        <p>Thousands of destinations for every taste.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-star"></i>
+                        <h3>Personalization</h3>
+                        <p>Recommendations that suit you.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Inspiration</h3>
+                        <p>New ideas for your adventures.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 TravelQuest. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
